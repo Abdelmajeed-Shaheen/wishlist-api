@@ -2,7 +2,7 @@ from django.shortcuts import render
 from items.models import Item
 from rest_framework.generics import ListAPIView, RetrieveAPIView, RetrieveUpdateAPIView, DestroyAPIView, CreateAPIView
 from .serializers import ItemListSerializer, ItemDetailSerializer, UserCreateSerializer
-from rest_framework.permissions import AllowAny, IsAdminUser
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from .permissions import IsAddedBy
 from rest_framework.filters import OrderingFilter, SearchFilter
 
@@ -24,4 +24,4 @@ class ItemDetailView(RetrieveAPIView):
     serializer_class = ItemDetailSerializer
     lookup_field = 'id'
     lookup_url_kwarg = 'item_id'
-    permission_classes = [AllowAny]
+    permission_classes = [IsAddedBy]

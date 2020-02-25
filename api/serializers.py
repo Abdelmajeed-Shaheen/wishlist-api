@@ -34,7 +34,7 @@ class ItemListSerializer(serializers.ModelSerializer):
 		model = Item
 		fields = ['name','detail','favourited','added_by']
 	def get_favourited(self, obj):
-		return obj.favoriteitem_set.count()
+		return len(obj.favoriteitem_set.all())
 
 
 class ItemDetailSerializer(serializers.ModelSerializer):

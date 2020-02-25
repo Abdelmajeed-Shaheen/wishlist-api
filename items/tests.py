@@ -106,9 +106,3 @@ class ItemDetailViewTest(APITestCase):
 		response = self.client.get(reverse('api-detail', args=[1]))
 		people_count = FavoriteItem.objects.filter(item_id=1).count()
 		self.assertEqual(len(dict(response.data)['favourited_by']), people_count)
-
-
-
-
-
-
